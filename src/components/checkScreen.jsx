@@ -4,7 +4,7 @@ import Marquee from "react-fast-marquee";
 import Typography from '@mui/material/Typography';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { SettingAccordions } from "../components/settingAccordion";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
@@ -53,6 +53,8 @@ export function CheckScreen() {
                     <Typography variant="h3" gutterBottom sx={{ color: "#fff", textAlign: "center" }}>
                         {title.split("，")[1]}
                     </Typography>
+
+                    <Button variant="contained" component={Link} to="/">返回</Button>
                 </div>
             </Backdrop>
         </>

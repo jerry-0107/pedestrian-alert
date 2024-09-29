@@ -127,8 +127,7 @@ export function SettingAccordions() {
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit
-                        amet egestas eros, vitae egestas augue. Duis vel est augue.
+                        <Button variant='contained' color="primary" component={Link} to="/check" state={{ href: "/whitelight", q: "" }}>啟動 純白照明</Button>
                     </Typography>
                 </AccordionDetails>
             </Accordion>
