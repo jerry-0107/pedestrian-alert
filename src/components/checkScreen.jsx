@@ -54,7 +54,7 @@ export function CheckScreen() {
                         {title.split("，")[1]}
                     </Typography>
 
-                    <Button variant="contained" component={Link} to="/">返回</Button>
+                    {/* <Button variant="contained" component={Link} to="/">返回</Button> */}
                 </div>
             </Backdrop>
         </>

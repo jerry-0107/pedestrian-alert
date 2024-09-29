@@ -22,14 +22,18 @@ export function Marquees() {
         if (screenWidth < screenHeight) {
             link.current.click()
         }
+
     }, [screenHeight, screenWidth])
 
 
-
+    window.onresize = function () {
+        setScreenWidth(window.screen.width)
+        setScreenHeight(window.screen.height)
+    }
     return <> <Box sx={{ width: "100%", height: "100%", display: "flex" }} onClick={handle.enter}>
 
         <FullScreen handle={handle}>
-            <Marquee style={{ color: "#fff", background: "#000", fontSize: "30vw", width: "100%", height: "100%", verticalAlign: "center" }} speed={Number(UrlParam("s"))}>{UrlParam("q")}&nbsp;&nbsp;&nbsp;&nbsp;</Marquee>
+            <Marquee style={{ userSelect: "none", color: "#fff", background: "#000", fontSize: "30vw", width: "100%", height: "100%", verticalAlign: "center" }} speed={Number(UrlParam("s"))}>{UrlParam("q")}&nbsp;&nbsp;&nbsp;&nbsp;</Marquee>
         </FullScreen>
         <Backdrop
             sx={(theme) => ({ color: '#fff', zIndex: theme.zIndex.drawer + 1, userSelect: "none" })}
