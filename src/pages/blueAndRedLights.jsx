@@ -59,7 +59,7 @@ export function BlueAndRedLights() {
     }
     return (
         <>
-            <Box sx={{ width: "100%", height: "100%", display: "flex" }} onClick={handle.enter}>
+            <Box sx={{ width: "100%", height: "100%", display: "flex" }}>
 
                 <FullScreen handle={handle}>
                     <Box sx={{ width: "100%", height: "100%", display: "flex" }}>
@@ -68,6 +68,7 @@ export function BlueAndRedLights() {
                     </Box>
                 </FullScreen>
                 <Backdrop
+                    onClick={handle.enter}
                     sx={(theme) => ({ color: '#fff', zIndex: theme.zIndex.drawer + 1, userSelect: "none" })}
                     open={open}
                 // onClick={handleClose}
@@ -79,6 +80,9 @@ export function BlueAndRedLights() {
                             </Typography>
                             <Typography variant="h3" gutterBottom>
                                 點擊進入全螢幕
+                            </Typography>
+                            <Typography variant="h6" component={Link} to="/" gutterBottom sx={{ color: "#ccc", textAlign: "center" }}>
+                                或者按這裡返回首頁
                             </Typography>
                         </Box>
                     </Box>

@@ -53,7 +53,9 @@ export function CheckScreen() {
                     <Typography variant="h3" gutterBottom sx={{ color: "#fff", textAlign: "center" }}>
                         {title.split("，")[1]}
                     </Typography>
-
+                    <Typography variant="h6" component={Link} to="/" gutterBottom sx={{ color: "#ccc", textAlign: "center" }}>
+                        或者按這裡返回首頁
+                    </Typography>
                     {/* <Button variant="contained" component={Link} to="/">返回</Button> */}
                 </div>
             </Backdrop>

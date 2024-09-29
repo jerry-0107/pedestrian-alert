@@ -15,9 +15,17 @@ export function SettingAccordions() {
     const [marqueeSpeed, setMarqueeSpeed] = React.useState(100)
     const [marqueeText, setMarqueeText] = React.useState("禮讓行人 感謝有你")
 
+    const [mutiText, setMutiText] = React.useState(["禮讓行人", "人人有責", "", "", ""])
+
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
+
+    function handleMutiTextChange(text, i) {
+        var m = mutiText
+        m[i] = text
+        setMutiText(m)
+    }
 
     return (
         <div>
@@ -106,8 +114,15 @@ export function SettingAccordions() {
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit
-                        amet egestas eros, vitae egestas augue. Duis vel est augue.
+                        最多可以設定五組文字內容，系統會自動處理輸入的內容
+                        <Box sx={{ p: 3 }}>
+                            <TextField id="standard-basic" label="顯示內容 #1" variant="standard" value={mutiText[0]} onChange={(e) => setMutiText(e.target.value, 0)} /><p></p>
+                            <TextField id="standard-basic" label="顯示內容 #2" variant="standard" value={mutiText[1]} onChange={(e) => setMutiText(e.target.value, 1)} /><p></p>
+                            <TextField id="standard-basic" label="顯示內容 #3" variant="standard" value={mutiText[2]} onChange={(e) => setMutiText(e.target.value, 2)} /><p></p>
+                            <TextField id="standard-basic" label="顯示內容 #4" variant="standard" value={mutiText[3]} onChange={(e) => setMutiText(e.target.value, 3)} /><p></p>
+                            <TextField id="standard-basic" label="顯示內容 #5" variant="standard" value={mutiText[4]} onChange={(e) => setMutiText(e.target.value, 4)} />
+                        </Box>
+
                     </Typography>
                 </AccordionDetails>
             </Accordion>

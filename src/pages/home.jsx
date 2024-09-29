@@ -51,7 +51,10 @@ export function Home() {
             </Box>
         </Backdrop>
         <Box sx={{ p: 3 }}>
-            <Typography variant="h3" gutterBottom>
+            <Typography variant="h2" gutterBottom>
+                行人警告
+            </Typography>
+            <Typography variant="h4" gutterBottom>
                 {title}
             </Typography>
             <SettingAccordions />
