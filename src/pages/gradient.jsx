@@ -32,12 +32,14 @@ export function Gradient() {
 
     return (
         <>
-            <Box sx={{ width: "100%", height: "100%", display: "flex" }}>
-                <FullScreen handle={handle}>
+            <Box>
+                <FullScreen handle={handle} >
                     <div className="test" style={{ width: "100%", height: "100%" }}></div>
                 </FullScreen>
             </Box>
-            <Box>
+            <Box sx={{ width: "100%", height: "100%", display: "flex" }}>
+                <div className="test" style={{ width: "100%", height: "100%" }}></div>
+
                 <div hidden>
                     <Button variant='contained' color="primary" component={Link} to="/check" state={{ href: "/gradient", q: `` }} ref={link}>啟動 跑馬燈</Button>
                 </div>
