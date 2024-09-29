@@ -5,6 +5,7 @@ import { BlueAndRedLights } from './pages/blueAndRedLights';
 import { CheckScreen } from './components/checkScreen';
 import { Marquees } from './pages/marquee';
 import { WhiteLight } from './pages/whitelight';
+import { Gradient } from './pages/gradient';
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
         <Route path='/light' element={<BlueAndRedLights />}></Route>
         <Route path='/marquee' element={<Marquees />}></Route>
         <Route path='/whitelight' element={<WhiteLight />}></Route>
+        <Route path='/gradient' element={<Gradient />}></Route>
+
 
         <Route path='/check' element={<CheckScreen />}></Route>
 

@@ -150,14 +150,19 @@ export function SettingAccordions() {
             <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel4bh-content"
-                    id="panel4bh-header"
+                    aria-controls="panel3bh-content"
+                    id="panel3bh-header"
                 >
-                    <Typography sx={{ width: '33%', flexShrink: 0 }}>設定</Typography>
+                    <Typography sx={{ width: '33%', flexShrink: 0 }}>
+                        漸層照明
+                    </Typography>
+                    <Typography sx={{ color: 'text.secondary' }}>
+                        將手機亮度調到最亮並開始照明
+                    </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        防誤觸?
+                        <Button variant='contained' color="primary" component={Link} to="/check" state={{ href: "/gradient", q: "" }}>啟動 漸層照明</Button>
                     </Typography>
                 </AccordionDetails>
             </Accordion>
