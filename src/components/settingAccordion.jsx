@@ -82,7 +82,7 @@ export function SettingAccordions() {
                                 defaultValue={100}
                                 value={marqueeSpeed}
                                 min={10}
-                                max={500}
+                                max={700}
                                 step={10}
                                 valueLabelDisplay="on"
 

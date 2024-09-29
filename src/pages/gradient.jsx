@@ -54,6 +54,9 @@ export function Gradient() {
                                 即將啟動 漸層照明
                             </Typography>
                             <Typography variant="h3" gutterBottom>
+                                請將亮度調到最大
+                            </Typography>
+                            <Typography variant="h3" gutterBottom>
                                 點擊進入全螢幕
                             </Typography>
                             <Typography variant="h6" gutterBottom sx={{ color: "#ccc", textAlign: "center" }}>

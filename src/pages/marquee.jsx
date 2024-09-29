@@ -30,17 +30,19 @@ export function Marquees() {
         setScreenWidth(window.screen.width)
         setScreenHeight(window.screen.height)
     }
-    return <> <Box sx={{ width: "100%", height: "100%", display: "flex" }} onClick={handle.enter}>
+    return <> <Box sx={{ width: "100%", height: "100%", display: "flex" }}>
 
         <FullScreen handle={handle}>
-            <Marquee style={{ userSelect: "none", color: "#fff", background: "#000", fontSize: "30vw", width: "100%", height: "100%", verticalAlign: "center" }} speed={Number(UrlParam("s"))}>{UrlParam("q")}&nbsp;&nbsp;&nbsp;&nbsp;</Marquee>
+            <Marquee style={{ userSelect: "none", maxWidth: "100vw", color: "#fff", background: "#000", fontSize: "30vw", width: "100%", height: "100%", verticalAlign: "center" }} speed={Number(UrlParam("s"))}>{UrlParam("q")}&nbsp;&nbsp;&nbsp;&nbsp;</Marquee>
         </FullScreen>
+
         <Backdrop
             sx={(theme) => ({ color: '#fff', zIndex: theme.zIndex.drawer + 1, userSelect: "none" })}
             open={open}
+            onClick={handle.enter}
         // onClick={handleClose}
         >
-            <Box sx={{ display: "flex", flexDirection: "column", textAlign: "center" }}>
+            <Box sx={{ display: "flex", flexDirection: "column", textAlign: "center" }} >
                 <Box>
                     <Typography variant="h3" gutterBottom>
                         即將啟動 跑馬燈

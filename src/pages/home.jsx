@@ -9,7 +9,7 @@ import { SettingAccordions } from "../components/settingAccordion";
 
 export function Home() {
 
-    const [title, setTitle] = React.useState("Loading")
+    const [title, setTitle] = React.useState("")
     const [open, setOpen] = React.useState(true);
     const [screenWidth, setScreenWidth] = React.useState(window.screen.width)
     const [screenHeight, setScreenHeight] = React.useState(window.screen.height)
