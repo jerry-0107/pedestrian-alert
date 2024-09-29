@@ -4,9 +4,10 @@ import Marquee from "react-fast-marquee";
 import Typography from '@mui/material/Typography';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { UrlParam } from "../components/urlParam";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
+import { Link } from "react-router-dom";
 
 export function BlueAndRedLights() {
     const handle = useFullScreenHandle();
@@ -17,6 +18,7 @@ export function BlueAndRedLights() {
     const [screenHeight, setScreenHeight] = React.useState(window.screen.height)
     const [t, st] = React.useState(false)
     const _WAITMS = Number(UrlParam("q")) || 500
+    const link = React.useRef()
 
 
     const handleClose = () => {
@@ -44,6 +46,9 @@ export function BlueAndRedLights() {
 
         }
         if (screenWidth > screenHeight) _ka()
+        else {
+            link.current.click()
+        }
 
 
     }, [screenWidth, screenHeight])
@@ -79,6 +84,10 @@ export function BlueAndRedLights() {
                     </Box>
                 </Backdrop>
             </Box>
+            <div hidden>
+
+                <Button variant='contained' color="primary" component={Link} to="/check" state={{ href: "/light", q: UrlParam("q") }} ref={link}>啟動 紅藍閃燈</Button>
+            </div>
         </>)
 
 }
