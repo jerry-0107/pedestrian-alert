@@ -51,7 +51,7 @@ export function Home() {
             </Box>
         </Backdrop>
         <Box sx={{ p: 3 }}>
-            <Typography variant="h2" gutterBottom>
+            <Typography variant="h3" gutterBottom>
                 {title}
             </Typography>
             <SettingAccordions />

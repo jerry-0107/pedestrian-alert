@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 
 export function SettingAccordions() {
     const [expanded, setExpanded] = React.useState(false);
+    const [flashRate, setFlashRate] = React.useState(500)
 
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
@@ -35,8 +36,9 @@ export function SettingAccordions() {
                         閃爍頻率(ms)
                         <Box sx={{ p: 3 }}>
                             <Slider
-
+                                onChange={(e) => setFlashRate(e.target.value)}
                                 defaultValue={500}
+                                value={flashRate}
                                 min={100}
                                 max={3000}
                                 step={100}
@@ -45,7 +47,7 @@ export function SettingAccordions() {
                             />
 
                         </Box>
-                        <Button variant='contained' color="primary" component={Link} to="/light">啟動 紅藍閃燈</Button>
+                        <Button variant='contained' color="primary" component={Link} to="/check" state={{ href: "/light", q: flashRate }}>啟動 紅藍閃燈</Button>
                     </Typography>
                 </AccordionDetails>
             </Accordion>
@@ -98,8 +100,7 @@ export function SettingAccordions() {
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit
-                        amet egestas eros, vitae egestas augue. Duis vel est augue.
+                        防誤觸?
                     </Typography>
                 </AccordionDetails>
             </Accordion>

@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Box } from "@mui/material";
+import { UrlParam } from "../components/urlParam";
 
 export function BlueAndRedLights() {
 
@@ -13,6 +14,8 @@ export function BlueAndRedLights() {
     const [screenWidth, setScreenWidth] = React.useState(window.screen.width)
     const [screenHeight, setScreenHeight] = React.useState(window.screen.height)
     const [t, st] = React.useState(false)
+    const _WAITMS = Number(UrlParam("q")) || 500
+
 
     const handleClose = () => {
         setOpen(false);
@@ -28,13 +31,14 @@ export function BlueAndRedLights() {
 
         async function _ka() {
 
-            do {
-                await delay(500)
+            while (true) {
+                await delay(_WAITMS)
                 st(true)
-                await delay(500)
+                if (screenWidth < screenHeight) return
+                await delay(_WAITMS)
                 st(false)
-
-            } while (screenWidth > screenHeight);
+                if (screenWidth < screenHeight) return
+            }
 
         }
         if (screenWidth > screenHeight) _ka()
