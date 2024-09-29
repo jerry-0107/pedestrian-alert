@@ -24,7 +24,6 @@ export function CheckScreen() {
         console.log(loc)
         if (!loc.state) {
             setTitle("發生錯誤，請回首頁")
-
         }
         else if (screenWidth < screenHeight) {
             setTitle("旋轉螢幕，調高亮度")

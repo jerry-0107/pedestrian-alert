@@ -23,6 +23,7 @@ export function WhiteLight() {
             link.current.click()
         }
     }, [screenHeight, screenWidth])
+
     window.onresize = function () {
         setScreenWidth(window.screen.width)
         setScreenHeight(window.screen.height)

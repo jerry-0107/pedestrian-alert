@@ -99,7 +99,7 @@ export function SettingAccordions() {
                     </Typography>
                 </AccordionDetails>
             </Accordion>
-            <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+            {/* <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel3bh-content"
@@ -125,7 +125,7 @@ export function SettingAccordions() {
 
                     </Typography>
                 </AccordionDetails>
-            </Accordion>
+            </Accordion> */}
 
             <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
                 <AccordionSummary
