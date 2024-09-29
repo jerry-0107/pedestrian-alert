@@ -90,6 +90,28 @@ export function SettingAccordions() {
                     </Typography>
                 </AccordionDetails>
             </Accordion>
+
+            <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
+                <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel3bh-content"
+                    id="panel3bh-header"
+                >
+                    <Typography sx={{ width: '33%', flexShrink: 0 }}>
+                        純白照明
+                    </Typography>
+                    <Typography sx={{ color: 'text.secondary' }}>
+                        將手機亮度調到最亮並開始照明
+                    </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <Typography>
+                        Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit
+                        amet egestas eros, vitae egestas augue. Duis vel est augue.
+                    </Typography>
+                </AccordionDetails>
+            </Accordion>
+
             <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}

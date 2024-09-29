@@ -6,8 +6,10 @@ import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Box } from "@mui/material";
 import { UrlParam } from "../components/urlParam";
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 export function BlueAndRedLights() {
+    const handle = useFullScreenHandle();
 
     const [title, setTitle] = React.useState("Loading")
     const [open, setOpen] = React.useState(true);
@@ -50,13 +52,33 @@ export function BlueAndRedLights() {
         setScreenWidth(window.screen.width)
         setScreenHeight(window.screen.height)
     }
-    return (<Box sx={{ width: "100%", height: "100%", display: "flex" }}>
+    return (
+        <>
+            <Box sx={{ width: "100%", height: "100%", display: "flex" }} onClick={handle.enter}>
 
-
-        <Box sx={{ width: "100%", height: "100%", display: "flex" }}>
-            <Box sx={{ width: "100%", height: "100%", background: t ? "blue" : "#9d9de7" }}></Box>
-            <Box sx={{ width: "100%", height: "100%", background: !t ? "red" : "#eb8f8f" }}></Box>
-        </Box>
-    </Box>)
+                <FullScreen handle={handle}>
+                    <Box sx={{ width: "100%", height: "100%", display: "flex" }}>
+                        <Box sx={{ width: "100%", height: "100%", background: t ? "blue" : "#9d9de7" }}></Box>
+                        <Box sx={{ width: "100%", height: "100%", background: !t ? "red" : "#eb8f8f" }}></Box>
+                    </Box>
+                </FullScreen>
+                <Backdrop
+                    sx={(theme) => ({ color: '#fff', zIndex: theme.zIndex.drawer + 1, userSelect: "none" })}
+                    open={open}
+                // onClick={handleClose}
+                >
+                    <Box sx={{ display: "flex", flexDirection: "column", textAlign: "center" }}>
+                        <Box>
+                            <Typography variant="h3" gutterBottom>
+                                即將啟動 紅藍閃燈
+                            </Typography>
+                            <Typography variant="h3" gutterBottom>
+                                點擊進入全螢幕
+                            </Typography>
+                        </Box>
+                    </Box>
+                </Backdrop>
+            </Box>
+        </>)
 
 }

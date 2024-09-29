@@ -12,6 +12,8 @@ function App() {
         <Route path='/light' element={<BlueAndRedLights />}></Route>
         <Route path='/check' element={<CheckScreen />}></Route>
 
+        <Route path='*' element={<Home />}></Route>
+
       </Routes>
     </>
   );
