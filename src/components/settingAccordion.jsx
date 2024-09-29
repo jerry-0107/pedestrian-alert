@@ -7,10 +7,13 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Slider from '@mui/material/Slider';
 import { Box, Button } from "@mui/material";
 import { Link } from 'react-router-dom';
+import TextField from '@mui/material/TextField';
 
 export function SettingAccordions() {
     const [expanded, setExpanded] = React.useState(false);
     const [flashRate, setFlashRate] = React.useState(500)
+    const [marqueeSpeed, setMarqueeSpeed] = React.useState(100)
+    const [marqueeText, setMarqueeText] = React.useState("禮讓行人 感謝有你")
 
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
@@ -64,9 +67,27 @@ export function SettingAccordions() {
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        Donec placerat, lectus sed mattis semper, neque lectus feugiat lectus,
-                        varius pulvinar diam eros in elit. Pellentesque convallis laoreet
-                        laoreet.
+                        速度
+                        <Box sx={{ p: 3 }}>
+                            <Slider
+                                onChange={(e) => setMarqueeSpeed(e.target.value)}
+                                defaultValue={100}
+                                value={marqueeSpeed}
+                                min={10}
+                                max={500}
+                                step={10}
+                                valueLabelDisplay="on"
+
+                            />
+
+
+                        </Box>
+
+                        <Box sx={{ p: 3 }}>
+                            <TextField id="standard-basic" label="顯示內容" variant="standard" value={marqueeText} onChange={(e) => setMarqueeText(e.target.value)} />
+
+                        </Box>
+                        <Button variant='contained' color="primary" component={Link} to="/check" state={{ href: "/marquee", q: `${marqueeText}&s=${marqueeSpeed}` }}>啟動 跑馬燈</Button>
                     </Typography>
                 </AccordionDetails>
             </Accordion>
