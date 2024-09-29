@@ -48,8 +48,8 @@ export function Marquees() {
                     <Typography variant="h3" gutterBottom>
                         點擊進入全螢幕
                     </Typography>
-                    <Typography variant="h6" component={Link} to="/" gutterBottom sx={{ color: "#ccc", textAlign: "center" }}>
-                        或者按這裡返回首頁
+                    <Typography variant="h6" gutterBottom sx={{ color: "#ccc", textAlign: "center" }}>
+                        要返回首頁嗎?請將螢幕打直
                     </Typography>
                 </Box>
             </Box>

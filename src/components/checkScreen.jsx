@@ -8,6 +8,8 @@ import { Box, Button } from "@mui/material";
 import { SettingAccordions } from "../components/settingAccordion";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
+import ScreenRotationIcon from '@mui/icons-material/ScreenRotation';
+import SystemSecurityUpdateWarningIcon from '@mui/icons-material/SystemSecurityUpdateWarning';
 
 export function CheckScreen() {
 
@@ -20,13 +22,17 @@ export function CheckScreen() {
 
     React.useEffect(() => {
         console.log(loc)
-        if (screenWidth < screenHeight) {
+        if (!loc.state) {
+            setTitle("發生錯誤，請回首頁")
+
+        }
+        else if (screenWidth < screenHeight) {
             setTitle("旋轉螢幕，調高亮度")
         } else if (loc.state.href) {
             setTitle("OK，繼續操作")
             link.current.click()
         } else {
-            setTitle("資料發生錯誤，請回首頁")
+            setTitle("發生錯誤，請回首頁")
         }
     }, [screenHeight, screenWidth])
 
@@ -39,13 +45,20 @@ export function CheckScreen() {
     return (
         <>
 
-            <Box sx={{ display: "none" }}>
-                <Link to={loc.state.href + "/?q=" + loc.state.q} ref={link}></Link>
-            </Box>
+            {Boolean(loc.state) &&
+                <Box sx={{ display: "none" }}>
+                    <Link to={loc.state.href + "/?q=" + loc.state.q} ref={link}></Link>
+                </Box>
+            }
 
 
-            <Backdrop open={true}>
+            <Backdrop open={true} sx={(theme) => ({ color: '#fff', zIndex: theme.zIndex.drawer + 1, userSelect: "none" })}
+            >
                 <div>
+
+                    {title.includes("旋轉") && <Typography sx={{ textAlign: "center" }}><ScreenRotationIcon fontSize="large" sx={{ fontSize: "5em" }} /></Typography>}
+                    {title.includes("錯誤") && <Typography sx={{ textAlign: "center" }}><SystemSecurityUpdateWarningIcon fontSize="large" sx={{ fontSize: "5em" }} /></Typography>}
+
                     <Typography variant="h3" gutterBottom sx={{ color: "#fff", textAlign: "center" }}>
                         {title.split("，")[0]}
                     </Typography>
@@ -53,8 +66,8 @@ export function CheckScreen() {
                     <Typography variant="h3" gutterBottom sx={{ color: "#fff", textAlign: "center" }}>
                         {title.split("，")[1]}
                     </Typography>
-                    <Typography variant="h6" component={Link} to="/" gutterBottom sx={{ color: "#ccc", textAlign: "center" }}>
-                        或者按這裡返回首頁
+                    <Typography variant="h6" component={Link} to="/" sx={{ color: "#ccc", textAlign: "center", width: "%" }}>
+                        要返回首頁嗎? 按這裡
                     </Typography>
                     {/* <Button variant="contained" component={Link} to="/">返回</Button> */}
                 </div>

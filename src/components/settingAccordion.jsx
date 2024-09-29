@@ -23,7 +23,7 @@ export function SettingAccordions() {
 
     function handleMutiTextChange(text, i) {
         var m = mutiText
-        m[i] = text
+        m[i] = [text]
         setMutiText(m)
     }
 
@@ -44,7 +44,7 @@ export function SettingAccordions() {
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        閃爍頻率(ms)
+                        閃爍頻率
                         <Box sx={{ p: 3 }}>
                             <Slider
                                 onChange={(e) => setFlashRate(e.target.value)}
