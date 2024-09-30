@@ -81,7 +81,7 @@ export function SettingAccordions() {
                         <Box sx={{ p: 3 }}>
                             <Slider
                                 onChange={(e) => setMarqueeSpeed(e.target.value)}
-                                defaultValue={100}
+                                defaultValue={350}
                                 value={marqueeSpeed}
                                 min={10}
                                 max={700}
