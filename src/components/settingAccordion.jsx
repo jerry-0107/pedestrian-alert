@@ -12,7 +12,7 @@ import TextField from '@mui/material/TextField';
 export function SettingAccordions() {
     const [expanded, setExpanded] = React.useState(false);
     const [flashRate, setFlashRate] = React.useState(500)
-    const [marqueeSpeed, setMarqueeSpeed] = React.useState(100)
+    const [marqueeSpeed, setMarqueeSpeed] = React.useState(350)
     const [marqueeText, setMarqueeText] = React.useState("禮讓行人 感謝有你")
 
     const [mutiText, setMutiText] = React.useState(["禮讓行人", "人人有責", "", "", ""])
