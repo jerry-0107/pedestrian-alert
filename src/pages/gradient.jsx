@@ -10,7 +10,7 @@ import React from 'react';
 
 export function Gradient() {
     const handle = useFullScreenHandle();
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = React.useState(false);
 
     const link = React.useRef()
     const [screenWidth, setScreenWidth] = React.useState(window.screen.width)
@@ -19,6 +19,8 @@ export function Gradient() {
     React.useEffect(() => {
         if (screenWidth < screenHeight) {
             link.current.click()
+        } else {
+            handle.enter()
         }
 
     }, [screenHeight, screenWidth])

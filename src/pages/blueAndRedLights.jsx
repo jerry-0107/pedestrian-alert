@@ -13,7 +13,7 @@ export function BlueAndRedLights() {
     const handle = useFullScreenHandle();
 
     const [title, setTitle] = React.useState("Loading")
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = React.useState(false);
     const [screenWidth, setScreenWidth] = React.useState(window.screen.width)
     const [screenHeight, setScreenHeight] = React.useState(window.screen.height)
     const [t, st] = React.useState(false)
@@ -45,7 +45,10 @@ export function BlueAndRedLights() {
             }
 
         }
-        if (screenWidth > screenHeight) _ka()
+        if (screenWidth > screenHeight) {
+            handle.enter()
+            _ka()
+        }
         else {
             link.current.click()
         }

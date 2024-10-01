@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 export function Marquees() {
     const handle = useFullScreenHandle();
     const [title, setTitle] = React.useState("Loading")
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = React.useState(false);
     const [screenWidth, setScreenWidth] = React.useState(window.screen.width)
     const [screenHeight, setScreenHeight] = React.useState(window.screen.height)
 
@@ -21,9 +21,12 @@ export function Marquees() {
     React.useEffect(() => {
         if (screenWidth < screenHeight) {
             link.current.click()
+        } else {
+            handle.enter()
         }
 
     }, [screenHeight, screenWidth])
+
 
 
     window.onresize = function () {
@@ -39,7 +42,6 @@ export function Marquees() {
         <Backdrop
             sx={(theme) => ({ color: '#fff', zIndex: theme.zIndex.drawer + 1, userSelect: "none" })}
             open={open}
-            onClick={handle.enter}
         // onClick={handleClose}
         >
             <Box sx={{ display: "flex", flexDirection: "column", textAlign: "center" }} >
