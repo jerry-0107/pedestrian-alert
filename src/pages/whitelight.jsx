@@ -23,6 +23,8 @@ export function WhiteLight() {
             link.current.click()
         } else {
             handle.enter()
+            if (!handle.active) setOpen(true)
+
         }
     }, [screenHeight, screenWidth])
 
@@ -64,7 +66,7 @@ export function WhiteLight() {
     </Box>
         <div hidden>
 
-            <Button variant='contained' color="primary" component={Link} to="/check" state={{ href: "/whitelight", q: `` }} ref={link}>啟動 跑馬燈</Button>
+            <Button variant='contained' color="primary" component={Link} to="/check" state={{ href: "/whitelight", q: ``, label: "純白照明" }} ref={link}>啟動 </Button>
         </div>
     </>
 

@@ -5,15 +5,17 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Slider from '@mui/material/Slider';
-import { Box, Button } from "@mui/material";
+import { Box, Button, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
 import { Link } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 
 export function SettingAccordions() {
+    const wordsForMarquee = ["禮讓行人，感謝有您", "我要過馬路", "請讓行人"]
+
     const [expanded, setExpanded] = React.useState(false);
     const [flashRate, setFlashRate] = React.useState(500)
     const [marqueeSpeed, setMarqueeSpeed] = React.useState(350)
-    const [marqueeText, setMarqueeText] = React.useState("禮讓行人 感謝有你")
+    const [marqueeText, setMarqueeText] = React.useState(wordsForMarquee[0])
 
     const [mutiText, setMutiText] = React.useState(["禮讓行人", "人人有責", "", "", ""])
 
@@ -26,10 +28,32 @@ export function SettingAccordions() {
         m[i] = [text]
         setMutiText(m)
     }
+    const [lastData, setLastData] = React.useState({ href: "/", q: "", label: "無資料", ok: false })
+
+    React.useEffect(() => {
+        try {
+            var _d = JSON.parse(localStorage.getItem("pAlert_LastAction"))
+            if (!_d) throw Error("nu;l")
+            setLastData({ ..._d, ok: true })
+        } catch (e) {
+            console.warn(e)
+            setLastData({ href: "/", q: "", label: "無資料", ok: false })
+            localStorage.setItem("pAlert_LastAction", "{}")
+        }
+    }, [])
+
 
     return (
         <div>
-
+            {lastData.ok && lastData.href &&
+                <Box
+                    component={Link}
+                    to="/check" state={{ href: lastData.href, q: lastData.q, label: lastData.label }}
+                    sx={{ display: "block", color: "inherit", textAlign: "center", userSelect: "none", borderRadius: 1, p: 1, mb: 1, background: "linear-gradient(297deg, rgb(255 253 29), rgb(255 187 149));", textDecoration: "none", boxShadow: 2 }}>
+                    <Typography variant='h4' textAlign={"center"} sx={{ textAlign: "center", width: "100%" }}>上次的設定</Typography>
+                    <Typography color="textPrimary">{lastData.label}</Typography>
+                </Box>
+            }
 
             <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                 <AccordionSummary
@@ -60,7 +84,7 @@ export function SettingAccordions() {
                             />
 
                         </Box>
-                        <Button variant='contained' color="primary" component={Link} to="/check" state={{ href: "/light", q: flashRate }}>啟動 紅藍閃燈</Button>
+                        <Button variant='contained' color="primary" component={Link} to="/check" state={{ href: "/light", q: flashRate, label: `紅藍閃燈，頻率:${(Number(flashRate) / 1000)}秒` }}>啟動 紅藍閃燈</Button>
                     </Typography>
                 </AccordionDetails>
             </Accordion>
@@ -89,15 +113,23 @@ export function SettingAccordions() {
                                 valueLabelDisplay="on"
 
                             />
-
-
                         </Box>
-
+                        顯示內容<Typography color="textSecondary">輸入或從下方列表選擇</Typography>
                         <Box sx={{ p: 3 }}>
                             <TextField id="standard-basic" label="顯示內容" variant="standard" value={marqueeText} onChange={(e) => setMarqueeText(e.target.value)} />
-
+                            <List sx={{ pt: 1 }}>
+                                {wordsForMarquee.map((d, i) => {
+                                    return (
+                                        <ListItem sx={{ m: 0, pt: 0 }}>
+                                            <ListItemButton onClick={(e) => setMarqueeText(d)} sx={{ m: 0, p: 0 }}>
+                                                <ListItemText primary={d} sx={{ m: 0, p: 0 }} />
+                                            </ListItemButton>
+                                        </ListItem>
+                                    )
+                                })}
+                            </List>
                         </Box>
-                        <Button variant='contained' color="primary" component={Link} to="/check" state={{ href: "/marquee", q: `${marqueeText}&s=${marqueeSpeed}` }}>啟動 跑馬燈</Button>
+                        <Button variant='contained' color="primary" component={Link} to="/check" state={{ href: "/marquee", q: `${marqueeText}&s=${marqueeSpeed}`, label: `跑馬燈，速度:${marqueeSpeed}，內容:${marqueeText}` }}>啟動 跑馬燈</Button>
                     </Typography>
                 </AccordionDetails>
             </Accordion>
@@ -144,7 +176,7 @@ export function SettingAccordions() {
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        <Button variant='contained' color="primary" component={Link} to="/check" state={{ href: "/whitelight", q: "" }}>啟動 純白照明</Button>
+                        <Button variant='contained' color="primary" component={Link} to="/check" state={{ href: "/whitelight", q: "", label: "純白照明" }}>啟動 純白照明</Button>
                     </Typography>
                 </AccordionDetails>
             </Accordion>
@@ -164,7 +196,7 @@ export function SettingAccordions() {
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        <Button variant='contained' color="primary" component={Link} to="/check" state={{ href: "/gradient", q: "" }}>啟動 漸層照明</Button>
+                        <Button variant='contained' color="primary" component={Link} to="/check" state={{ href: "/gradient", q: "", label: "漸層照明" }}>啟動 漸層照明</Button>
                     </Typography>
                 </AccordionDetails>
             </Accordion>

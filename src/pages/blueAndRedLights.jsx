@@ -47,6 +47,7 @@ export function BlueAndRedLights() {
         }
         if (screenWidth > screenHeight) {
             handle.enter()
+            if (!handle.active) setOpen(true)
             _ka()
         }
         else {
@@ -93,7 +94,7 @@ export function BlueAndRedLights() {
             </Box>
             <div hidden>
 
-                <Button variant='contained' color="primary" component={Link} to="/check" state={{ href: "/light", q: UrlParam("q") }} ref={link}>啟動 紅藍閃燈</Button>
+                <Button variant='contained' color="primary" component={Link} to="/check" state={{ href: "/light", q: _WAITMS, label: `紅藍閃燈，頻率:${(Number(_WAITMS) / 1000)}秒` }} ref={link}>啟動 紅藍閃燈</Button>
             </div>
         </>)
 

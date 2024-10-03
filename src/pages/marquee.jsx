@@ -23,6 +23,8 @@ export function Marquees() {
             link.current.click()
         } else {
             handle.enter()
+            if (!handle.active) setOpen(true)
+
         }
 
     }, [screenHeight, screenWidth])
@@ -61,7 +63,7 @@ export function Marquees() {
     </Box>
         <div hidden>
 
-            <Button variant='contained' color="primary" component={Link} to="/check" state={{ href: "/marquee", q: `${UrlParam("q")}&s=${UrlParam("s")}` }} ref={link}>啟動 跑馬燈</Button>
+            <Button variant='contained' color="primary" component={Link} to="/check" state={{ href: "/marquee", q: `${UrlParam("q")}&s=${UrlParam("s")}`, label: `跑馬燈，速度:${UrlParam("s")}，內容:${UrlParam("q")} ` }} ref={link}>啟動 跑馬燈</Button>
         </div>
     </>
 

@@ -6,7 +6,7 @@ import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Box, Button } from "@mui/material";
 import { SettingAccordions } from "../components/settingAccordion";
-import { useLocation } from "react-router";
+import { json, useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import ScreenRotationIcon from '@mui/icons-material/ScreenRotation';
 import SystemSecurityUpdateWarningIcon from '@mui/icons-material/SystemSecurityUpdateWarning';
@@ -29,6 +29,7 @@ export function CheckScreen() {
             setTitle("旋轉螢幕，調高亮度")
         } else if (loc.state.href) {
             setTitle("OK，繼續操作")
+            localStorage.setItem("pAlert_LastAction", JSON.stringify({ href: loc.state.href, q: loc.state.q, label: loc.state.label }))
             link.current.click()
         } else {
             setTitle("發生錯誤，請回首頁")

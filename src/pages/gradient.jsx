@@ -21,6 +21,7 @@ export function Gradient() {
             link.current.click()
         } else {
             handle.enter()
+            if (!handle.active) setOpen(true)
         }
 
     }, [screenHeight, screenWidth])
@@ -43,7 +44,7 @@ export function Gradient() {
                 <div className="test" style={{ width: "100%", height: "100%" }}></div>
 
                 <div hidden>
-                    <Button variant='contained' color="primary" component={Link} to="/check" state={{ href: "/gradient", q: `` }} ref={link}>啟動 跑馬燈</Button>
+                    <Button variant='contained' color="primary" component={Link} to="/check" state={{ href: "/gradient", q: ``, label: "漸層照明" }} ref={link}>啟動 跑馬燈</Button>
                 </div>
 
                 <Backdrop
