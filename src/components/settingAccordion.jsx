@@ -49,9 +49,9 @@ export function SettingAccordions() {
                 <Box
                     component={Link}
                     to="/check" state={{ href: lastData.href, q: lastData.q, label: lastData.label }}
-                    sx={{ display: "block", color: "inherit", textAlign: "center", userSelect: "none", borderRadius: 1, p: 1, mb: 1, background: "linear-gradient(297deg, rgb(255 253 29), rgb(255 187 149));", textDecoration: "none", boxShadow: 2 }}>
+                    sx={{ display: "block", color: "#000", textAlign: "center", userSelect: "none", borderRadius: 1, p: 1, mb: 1, background: "linear-gradient(297deg, rgb(255 253 29), rgb(255 187 149));", textDecoration: "none", boxShadow: 2 }}>
                     <Typography variant='h4' textAlign={"center"} sx={{ textAlign: "center", width: "100%" }}>上次的設定</Typography>
-                    <Typography color="textPrimary">{lastData.label}</Typography>
+                    <Typography sx={{ color: "#333" }}>{lastData.label}</Typography>
                 </Box>
             }
 

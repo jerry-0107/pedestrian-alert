@@ -6,23 +6,35 @@ import { CheckScreen } from './components/checkScreen';
 import { Marquees } from './pages/marquee';
 import { WhiteLight } from './pages/whitelight';
 import { Gradient } from './pages/gradient';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 
 function App() {
+
+  const darkTheme = createTheme({
+    palette: {
+      mode: 'dark',
+    },
+  });
+
   return (
     <>
-      <Routes>
-        <Route path='/' element={<Home />}></Route>
-        <Route path='/light' element={<BlueAndRedLights />}></Route>
-        <Route path='/marquee' element={<Marquees />}></Route>
-        <Route path='/whitelight' element={<WhiteLight />}></Route>
-        <Route path='/gradient' element={<Gradient />}></Route>
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline />
+        <Routes>
+          <Route path='/' element={<Home />}></Route>
+          <Route path='/light' element={<BlueAndRedLights />}></Route>
+          <Route path='/marquee' element={<Marquees />}></Route>
+          <Route path='/whitelight' element={<WhiteLight />}></Route>
+          <Route path='/gradient' element={<Gradient />}></Route>
 
 
-        <Route path='/check' element={<CheckScreen />}></Route>
+          <Route path='/check' element={<CheckScreen />}></Route>
 
-        <Route path='*' element={<Home />}></Route>
+          <Route path='*' element={<Home />}></Route>
 
-      </Routes>
+        </Routes>
+      </ThemeProvider>
     </>
   );
 }
