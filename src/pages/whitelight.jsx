@@ -44,6 +44,7 @@ export function WhiteLight() {
         <Backdrop
             sx={(theme) => ({ color: '#fff', zIndex: theme.zIndex.drawer + 1, userSelect: "none" })}
             open={open}
+            onClick={handle.enter}
         // onClick={handleClose}
         >
             <Box sx={{ display: "flex", flexDirection: "column", textAlign: "center" }}>
